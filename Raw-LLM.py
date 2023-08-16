@@ -37,7 +37,7 @@ def retrieve_questions(path):
     # Load your text document from the specified path
     with open(path, 'r') as file:
         document_text = file.read()
-    openai.api_key = "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"
+    openai.api_key = ""
     doc_text = TextLoader(path)
     doc = doc_text.load()
     text_splitter = CharacterTextSplitter(chunk_size=300, chunk_overlap=0)
