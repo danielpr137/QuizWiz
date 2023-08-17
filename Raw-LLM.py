@@ -39,10 +39,10 @@ def retrieve_questions(path):
     db = Chroma.from_documents(texts, embedding_function)
     llm = ChatOpenAI(openai_api_key=openai.api_key, model_name="gpt-3.5-turbo", temperature=0)
     qa_chain = RetrievalQA.from_chain_type(llm, retriever=db.as_retriever())
-    qa_chain({"query": "What was Einstein most important work?"})
+    qa = qa_chain.run("What was Einstein most important work?")
 
     # print results
-    print(qa_chain[0].page_content)
+    print(qa)
 
 
 retrieve_questions('/Users/idoofir1/PycharmProjects/QuizWiz/text.txt')
