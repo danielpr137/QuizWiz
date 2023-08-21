@@ -43,9 +43,50 @@
     input[type="submit"]:hover {
         background-color: #0056b3;
     }
+
+    #googleLoginBtn {
+        background-color: #fff;
+        color: #757575;
+        border: 1px solid #ccc;
+        padding: 10px 20px;
+        border-radius: 2px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #googleLoginBtn:hover {
+        background-color: #f7f7f7;
+    }
+
+    .google-logo {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .center-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
 </style>
 <body>
     <h1>QuizWiz</h1>
+
+    <div class="center-container">
+        <button id="googleLoginBtn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" class="google-logo">
+          Login with Google
+        </button>
+    </div>
 
     <form ref='uploadForm' 
         action='/upload' 
