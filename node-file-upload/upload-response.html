@@ -1,0 +1,81 @@
+<html>
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <style>
+              body {
+                  background-color: #121212;
+                  font-family: 'Courier New', Courier, monospace;
+                  color: #ffffff;
+                  text-align: center;
+                  padding-top: 10%;
+              }
+
+              h2 {
+                margin-top: 20px;
+                color: #FFA500;
+              }
+
+              ul {
+                list-style-type: none;
+                padding: 0;
+                text-align: left;
+                max-width: 400px;
+                margin: 0 auto;
+              }
+
+              li {
+                  margin: 10px 0;
+                  padding: 5px;
+                  background-color: #252525;
+                  border: 1px solid #3a3a3a;
+                  border-radius: 5px;
+              }
+
+              .files-container {
+                  text-align: left;
+                  display: inline-block;
+              }
+
+              .message {
+                  background-color: #252525;
+                  border: 1px solid #3a3a3a;
+                  padding: 20px;
+                  border-radius: 5px;
+                  display: inline-block;
+              }
+
+              .home-button {
+                  display: inline-block;
+                  margin-top: 20px;
+                  padding: 10px 20px;
+                  background-color: #007BFF;
+                  color: white;
+                  text-decoration: none;
+                  border-radius: 5px;
+                  transition: background-color 0.3s;
+              }
+
+              .home-button:hover {
+                  background-color: #0056b3;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="message">
+              File uploaded successfully! <br>
+              <a href="/" class="home-button">Home Page</a>
+          </div>
+          <script>
+              const messageElement = document.querySelector(".message");
+              messageElement.animate([
+                  { opacity: 0, transform: 'translateY(-40px)' },
+                  { opacity: 1, transform: 'translateY(0)' }
+              ], {
+                  duration: 800,
+                  easing: 'ease-out',
+                  fill: 'forwards'
+              });
+          </script>
+      </body>
+      </html>
