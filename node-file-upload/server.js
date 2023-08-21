@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -24,12 +25,30 @@ app.get('/', (req, res) => {
 
 // Handle file upload including feedback
 app.post('/upload', upload.single('file'), (req, res) => {
-    fs.readFile(__dirname + '/upload-response.html', 'utf8', (err, data) => {
+    fs.readdir(path.join(__dirname, 'uploads'), (err, files) => {
         if (err) {
             return res.status(500).send('Internal Server Error');
         }
-        res.send(data);
+    
+        let fileListHTML = files.map(file => `<li>${file}</li>`).join('');
+    
+        fs.readFile(__dirname + '/upload-response.html', 'utf8', (err, data) => {
+            if (err) {
+                return res.status(500).send('Internal Server Error');
+            }
+            
+            const updatedData = data.replace(
+                'File uploaded successfully! <br>',
+                `<div class="message">
+                File uploaded successfully! <br>
+                <div class="files-container"><h2>Uploaded Files:</h2><ul>${fileListHTML}
+                </ul></div>`
+            );            
+    
+            res.send(updatedData);
+        });
     });
+    
 });
 
 
