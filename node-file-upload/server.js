@@ -25,6 +25,19 @@ app.get('/', (req, res) => {
 
 // Handle file upload including feedback
 app.post('/upload', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.send(`
+            <html>
+                <body>
+                    <div class="message">
+                        No file was selected for upload.<br>
+                        <a href="/" class="home-button">Go Back</a>
+                    </div>
+                </body>
+            </html>
+        `);
+    }
+
     fs.readdir(path.join(__dirname, 'uploads'), (err, files) => {
         if (err) {
             return res.status(500).send('Internal Server Error');
