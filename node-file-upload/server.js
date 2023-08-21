@@ -23,8 +23,22 @@ app.get('/', (req, res) => {
 
 // Handle file upload including feedback
 app.post('/upload', upload.single('file'), (req, res) => {
-    res.send('File uploaded successfully!');
-});
+    res.send(`
+      <style>
+        .home-button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #007BFF;
+          color: white;
+          text-decoration: none;
+          border-radius: 4px;
+          margin-top: 20px;
+        }
+      </style>
+      File uploaded successfully! <br>
+      <a href="/" class="home-button">Home Page</a>
+    `);
+  });
 
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);
